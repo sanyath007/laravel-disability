@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container">
+  <div class="container" ng-controller="disabilityController">
     <div class="content">
 
       <ol class="breadcrumb">
@@ -11,8 +11,16 @@
       </ol>
 
       <div class="row" style="margin-bottom: 10px;">
-        <div class="col-md-12">
-          <a href="{{ url('/disability/create') }}" class="btn btn-primary">
+        <div class="col-md-6">
+          <div style="display: flex; align-items: center;">
+            <label for="">ปีงบประมาณ :</label>
+            <div class="col-md-4">
+              <input type="text" id="cboYear" ng-model="cboYear" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <a href="{{ url('/disability/create') }}" class="btn btn-primary pull-right">
             <i class="fa fa-user-plus" aria-hidden="true"></i>
             ลงทะเบียนผู้พิการใหม่
           </a>
