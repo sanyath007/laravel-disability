@@ -1,5 +1,5 @@
 <!-- /.Footer -->
-<footer class="text-muted" style="margin-top: 15px; padding-top: 10px; background-color: #3c3d41;">
+<footer class="text-muted" style="padding-top: 10px; background-color: #3c3d41;">
   <div id="footer-bottom" class="container-fluid" style="background-color: #000; color: #fff; height: 80px;">
     <div class="col-md-12" style="padding-top: 10px;">
       <p class="text-muted credit">

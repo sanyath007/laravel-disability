@@ -39,14 +39,12 @@
 	<script type="text/javascript" src="{{ asset('/js/controllers/disabilityController.js') }}"></script>
 </head>
 <body ng-app="app" ng-controller="mainController">
-	<div class="container">
+	<div class="app">
 		@extends('layouts.menu')
 
-		<div class="container">
-			<div class="content">
-				@yield('content')
-			</div>
-		</div>
+		<section class="content-wrapper">
+			@yield('content')
+		</section>
 
 		@extends('layouts.footer')
 	</div>

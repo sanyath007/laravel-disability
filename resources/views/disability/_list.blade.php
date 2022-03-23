@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="container" ng-controller="disabilityController" ng-init="search(cboYear)">
-        <div class="content">
+    <div class="content" ng-controller="disabilityController" ng-init="search(cboYear)">
+        <div class="container-fluid">
 
             <ol class="breadcrumb">
                 <li><a href="{{ url('/disabilities') }}"><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
