@@ -43,13 +43,14 @@ app.controller('disabilityController', function($scope, $http, CONFIG) {
         $scope.pager = pager;
     };
 
-    $scope.getDataWithUrl = function(e, URL, cb) {
+    $scope.getDataWithUrl = function(e, url, cb) {
         /** Check whether parent of clicked a tag is .disabled just do nothing */
         if ($(e.currentTarget).parent().is('li.disabled')) return;
 
         $scope.loading = true;
+        const year = $scope.cboYear === '' ? parseInt(moment().format('YYYY')) + 543 : $scope.cboYear;
 
-        $http.get(URL)
+        $http.get(`${url}&year=${year}`)
         .then(function(res) {
             cb(res);
 

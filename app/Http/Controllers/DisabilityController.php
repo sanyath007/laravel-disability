@@ -27,10 +27,20 @@ class DisabilityController extends Controller
 
     public function getDisabilities(Request $req)
     {
-        $disabilities   = Disability::orderBy('year', 'DESC')
-                            ->orderBy('disability_no', 'DESC')
-                            ->paginate(10);
-        $types          = DisabilityType::all();
+        $year = $req->input('year');
+
+        if (!empty($year)) {
+            $disabilities   = Disability::where('year', $year)
+                                ->orderBy('year', 'DESC')
+                                ->orderBy('disability_no', 'DESC')
+                                ->paginate(10);
+        } else {
+            $disabilities   = Disability::orderBy('year', 'DESC')
+                                ->orderBy('disability_no', 'DESC')
+                                ->paginate(10);
+        }
+
+        $types = DisabilityType::all();
 
         return [
             'disabilities'  => $disabilities,
