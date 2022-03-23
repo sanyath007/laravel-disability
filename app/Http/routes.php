@@ -53,19 +53,14 @@ Route::group(['middleware' => 'web'], function(){
    * ============= disability =============
    */
   Route::get('/disabilities', 'DisabilityController@index');
-
+  Route::get('/disabilities/list', 'DisabilityController@getDisabilities');
   Route::get('/disability/create', 'DisabilityController@create');
-
   Route::post('/disability', 'DisabilityController@store');
-
   Route::get('/disability/edit/{id}', 'DisabilityController@edit');
-
   Route::post('/disability/update', 'DisabilityController@update');
-
   Route::get('/disability/delete/{id}', 'DisabilityController@destroy');
 
   Route::get('/patients', 'PatientController@index');
-
   Route::get('/patient/{hn}', 'PatientController@findbyhn');
 });
 
@@ -73,13 +68,9 @@ Route::group(['middleware' => 'web'], function(){
  * ============= api group =============
  */
 Route::group(['prefix' => 'api'], function(){
-
   Route::post('/auth', 'Api\ApiController@auth');
-
 	Route::post('/signup', 'Api\ApiController@signup');
-
   Route::get('/users', 'Api\ApiController@index');
-
   Route::get('/user/{email}', 'Api\ApiController@online');
 });
 
