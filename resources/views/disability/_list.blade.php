@@ -55,10 +55,10 @@
                       @endforeach
                     </ul>
                   </td>
-                  <td>{{$disability->disability_detail}}</td>
-                  <td>{{$disability->doctorName->name}}</td>
+                  <td>{{ $disability->disability_detail }}</td>
+                  <td>{{ ($disability->doctorName) ? $disability->doctorName->name : '' }}</td>
                   <td style="text-align: center;">
-                    <a href="{{url('disability/edit', ['id' => $disability->id])}}" class="btn btn-warning">
+                    <a href="{{ url('disability/edit', ['id' => $disability->id]) }}" class="btn btn-warning">
                       <i class="fa fa-edit" aria-hidden="true"></i>
                     </a>
                     <!-- <a href="{{url('disability/delete', ['id' => $disability->id])}}" class="btn btn-danger" onclick="return confirm('ยืนยันการลบข้อมูล ?')">

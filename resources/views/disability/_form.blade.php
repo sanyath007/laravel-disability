@@ -164,7 +164,7 @@
   var cond = "";
 
   $(document).ready(function () {
-    $('#popupMsg').modal('show');
+   /* $('#popupMsg').modal('show');*/
   });
 
   $('#btnSearch').click(function(){
