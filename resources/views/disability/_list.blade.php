@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container" ng-controller="disabilityController" ng-init="search(2565)">
+    <div class="container" ng-controller="disabilityController" ng-init="search(cboYear)">
         <div class="content">
 
             <ol class="breadcrumb">

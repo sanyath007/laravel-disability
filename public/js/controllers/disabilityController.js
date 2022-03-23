@@ -26,7 +26,9 @@ app.controller('disabilityController', function($scope, $http, CONFIG) {
     $("#cboYear")
         .datepicker(initDateYearPicker)
         .on('changeDate', function(event) {
-            $scope.search(moment(event.date).format('YYYY'));
+            const year = parseInt(moment(event.date).format('YYYY')) + 543;
+
+            $scope.search(year);
         });
 
     $scope.search = function(year = '') {
