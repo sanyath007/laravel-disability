@@ -30,10 +30,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 	<!-- Compiled and minified JavaScript -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-	<script src="{{ asset('/js/app.js') }}"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script> -->
+	<script type="text/javascript" src="{{ asset('/node_modules/angular/angular.min.js') }}"></script>
+	<script src="{{ asset('/node_modules/angular-animate/angular-animate.min.js') }}"></script>
+	<script src="{{ asset('/node_modules/moment/moment.js') }}"></script>
+	<script src="{{ asset('/node_modules/select2/dist/js/select2.full.min.js') }}"></script>
+	<script src="{{ asset('/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+	<script src="{{ asset('/js/bootstrap-datepicker-custom.js') }}"></script>
+	<script src="{{ asset('/node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.th.min.js') }}"></script>
+
+	<script type="text/javascript" src="{{ asset('/js/env.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/controllers/mainController.js') }}"></script>
 </head>
-<body>
+<body ng-app="app" ng-controller="mainController">
 	<div class="container">
 		@extends('layouts.menu')
 
