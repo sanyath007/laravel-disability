@@ -51,12 +51,13 @@
                                     <td style="text-align: center;">@{{ disability.cid}}</td>
                                     <td>
                                     <ul style="margin-left: 8px; padding: 0px;">
-                                        @{{ disability.disability_type }}
-                                        
+                                        <li ng-repeat="(index, dtype) in disability.disability_type">
+                                            @{{ renderType(dtype) }}
+                                        </li>
                                     </ul>
                                     </td>
-                                    <td>@{{  disability.disability_detail }}</td>
-                                    <td>@{{ (disability.doctorName) ? disability.doctorName.name : '' }}</td>
+                                    <td>@{{ disability.disability_detail }}</td>
+                                    <td>@{{ (disability.doctor_name) ? disability.doctor_name.name : '' }}</td>
                                     <td style="text-align: center;">
                                         <a
                                             href="{{ url('disability/edit', ['id' => '']) }}"
@@ -64,7 +65,7 @@
                                         >
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
-                                    <!-- <a href="{{url('disability/delete', ['id' =>  ''])}}" class="btn btn-danger" onclick="return confirm('ยืนยันการลบข้อมูล ?')">
+                                    <!-- <a href="{{ url('disability/delete', ['id' =>  ''])}}" class="btn btn-danger" onclick="return confirm('ยืนยันการลบข้อมูล ?')">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </a> -->
                                     </td>

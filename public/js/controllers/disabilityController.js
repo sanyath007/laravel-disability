@@ -1,6 +1,7 @@
 app.controller('disabilityController', function($scope, $http, CONFIG) {
     $scope.cboYear = parseInt(moment().format('YYYY')) + 543;
     $scope.disabilities = [];
+    $scope.types = [];
     $scope.pager = null;
     $scope.loading = false;
 
@@ -39,7 +40,13 @@ app.controller('disabilityController', function($scope, $http, CONFIG) {
 
     $scope.setDisabilities = function(res) {
         const { data, ...pager } = res.data.disabilities;
-        $scope.disabilities = data;
+        $scope.types = res.data.types;
+
+        $scope.disabilities = data.map((disability) => {
+            const types = disability.disability_type.split(',');
+
+            return { ...disability, disability_type: types };
+        });
         $scope.pager = pager;
     };
 
@@ -60,4 +67,8 @@ app.controller('disabilityController', function($scope, $http, CONFIG) {
             $scope.loading = false;
         });
     };
+
+    $scope.renderType = function(dtype) {
+        return $scope.types.find(type => type.disability_type_id == dtype).disability_type_name;
+    }
 });
