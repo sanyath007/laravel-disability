@@ -31,11 +31,13 @@ class DisabilityController extends Controller
 
         if (!empty($year)) {
             $disabilities   = Disability::where('year', $year)
+                                ->with('doctorName')
                                 ->orderBy('year', 'DESC')
                                 ->orderBy('disability_no', 'DESC')
                                 ->paginate(10);
         } else {
-            $disabilities   = Disability::orderBy('year', 'DESC')
+            $disabilities   = Disability::with('doctorName')
+                                ->orderBy('year', 'DESC')
                                 ->orderBy('disability_no', 'DESC')
                                 ->paginate(10);
         }

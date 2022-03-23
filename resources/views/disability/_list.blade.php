@@ -81,7 +81,7 @@
                             จำนวน @{{ pager.total }} รายการ
                         </div>
                         <div class="col-md-4">
-                            <ul class="pagination pagination-sm no-margin pull-right" ng-show="pager.last_page > 1">
+                            <ul class="pagination pagination-sm pull-right" ng-show="pager.last_page > 1" style="margin: 0;">
                                 <li ng-if="pager.current_page !== 1">
                                     <a href="#" ng-click="getDataWithUrl($event, '{{ url('/disabilities/list') }}' + '?page=1', setDisabilities)" aria-label="Previous">
                                         <span aria-hidden="true">First</span>
