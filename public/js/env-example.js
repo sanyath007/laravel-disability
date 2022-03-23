@@ -2,13 +2,13 @@
   window.__env = window.__env || {};
 
   /** 
-  	* Main env 
+  * Main env 
   */
   // API url
   window.__env.apiUrl = 'http://dev.your-api.com';
 
   // Base url
-  window.__env.baseUrl = '/';
+  window.__env.baseUrl = window.location.protocol+ '//' +window.location.host+ '/your_path';
 
   // App Name
   window.__env.appName = '';
@@ -23,7 +23,7 @@
   window.__env.ggAnalyticsId = '';
 
   /** 
-  	* Custom env 
+  * Custom env 
   */
 
 
