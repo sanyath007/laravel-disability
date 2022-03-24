@@ -17,21 +17,26 @@ class ReportController extends Controller
 
 	public function getListByType()
 	{
-		if(empty(Input::get('name'))){
-			$patients = Patient::paginate(10);
-		}else{
-			$fullname = explode(' ', Input::get('name'));
+		$year = $req->input('year');
 
-			if (count($fullname) > 1) {
-				$patients = Patient::where('fname', 'like', '%' .$fullname[0]. '%')
-									->where('lname', 'like', '%' .$fullname[1]. '%')
-									->paginate(10);
-			} else {
-				$patients = Patient::where('fname', 'like', '%' .Input::get('name'). '%')
-									->paginate(10);
-			}
-		}
+        if (!empty($year)) {
+            $disabilities   = Disability::where('year', $year)
+                                ->with('doctorName')
+                                ->orderBy('year', 'DESC')
+                                ->orderBy('disability_no', 'DESC')
+                                ->paginate(10);
+        } else {
+            $disabilities   = Disability::with('doctorName')
+                                ->orderBy('year', 'DESC')
+                                ->orderBy('disability_no', 'DESC')
+                                ->paginate(10);
+        }
 
-		return $patients;
+        $types = DisabilityType::all();
+
+        return [
+            'disabilities'  => $disabilities,
+            'types'         => $types
+        ];
 	}
 }
