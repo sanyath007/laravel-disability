@@ -64,6 +64,7 @@
         Route::get('/patient/{hn}', 'PatientController@findbyhn');
 
         Route::get('/reports/list-type', 'ReportController@listByType');
+        Route::get('/reports/list-type-data', 'ReportController@getListByType');
     });
 
     /**

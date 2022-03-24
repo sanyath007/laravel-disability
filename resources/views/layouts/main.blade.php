@@ -37,6 +37,7 @@
 	<script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/js/controllers/mainController.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/js/controllers/disabilityController.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/controllers/reportController.js') }}"></script>
 </head>
 <body ng-app="app" ng-controller="mainController">
 	<div class="app">

@@ -6,37 +6,39 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
+use App\Disability;
+use App\DisabilityType;
 use App\Patient;
 
 class ReportController extends Controller
 {
 	public function listByType()
 	{
-		return view('reports.list-type');
+		return view('reports.list-type', [
+			'types'	=> DisabilityType::all()
+		]);
 	}
 
-	public function getListByType()
+	public function getListByType(Request $req)
 	{
 		$year = $req->input('year');
+		$type = $req->input('type');
+
+		$disabilities = Disability::with('doctorName')
+							->orderBy('year', 'ASC')
+							->orderBy('disability_no', 'ASC');
 
         if (!empty($year)) {
-            $disabilities   = Disability::where('year', $year)
-                                ->with('doctorName')
-                                ->orderBy('year', 'DESC')
-                                ->orderBy('disability_no', 'DESC')
-                                ->paginate(10);
-        } else {
-            $disabilities   = Disability::with('doctorName')
-                                ->orderBy('year', 'DESC')
-                                ->orderBy('disability_no', 'DESC')
-                                ->paginate(10);
+            $disabilities->where('year', $year);
         }
 
-        $types = DisabilityType::all();
+		if (!empty($type)) {
+
+		}
 
         return [
-            'disabilities'  => $disabilities,
-            'types'         => $types
+            'disabilities' 	=> $disabilities->get(),
+			'types' 		=> DisabilityType::all(),
         ];
 	}
 }

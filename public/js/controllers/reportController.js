@@ -1,5 +1,6 @@
 app.controller('reportController', function($scope, $http, CONFIG) {
-    $scope.cboYear = parseInt(moment().format('YYYY')) + 543;
+    $scope.dtpYear = parseInt(moment().format('YYYY')) + 543;
+    $scope.cboType = '';
     $scope.disabilities = [];
     $scope.types = [];
     $scope.pager = null;
@@ -23,18 +24,32 @@ app.controller('reportController', function($scope, $http, CONFIG) {
         thaiyear: true
     };
 
-    $("#cboYear")
+    $("#dtpYear")
         .datepicker(initDateYearPicker)
         .on('changeDate', function(event) {
-            const year = parseInt(moment(event.date).format('YYYY')) + 543;
+            $scope.dtpYear = parseInt(moment(event.date).format('YYYY')) + 543;
 
-            $scope.search(year);
+            $scope.getListType();
         });
 
-    $scope.getListType = function(year = '') {
-        $http.get(`${CONFIG.baseUrl}/disabilities/list?year=${year}`)
+    $scope.getListType = function() {
+        const type = $scope.cboType;
+        const year = $scope.dtpYear === '' ? parseInt(moment(event.date).format('YYYY')) + 543 : $scope.dtpYear;
+
+        $http.get(`${CONFIG.baseUrl}/reports/list-type-data?year=${year}&type=${type}`)
         .then(res => {
-            $scope.setDisabilities(res);
+            $scope.types = res.data.types;
+            $scope.disabilities = res.data.disabilities.map((disability) => {
+                const types = disability.disability_type.split(',');
+
+                return { ...disability, disability_type: types };
+            }).filter((disability) => {
+                if (type !== '') {
+                    return disability.disability_type.includes(type);
+                }
+
+                return disability;
+            });
         }, err => {
             console.log(err);
         });
@@ -42,7 +57,6 @@ app.controller('reportController', function($scope, $http, CONFIG) {
 
     $scope.setDisabilities = function(res) {
         const { data, ...pager } = res.data.disabilities;
-        $scope.types = res.data.types;
 
         $scope.disabilities = data.map((disability) => {
             const types = disability.disability_type.split(',');
