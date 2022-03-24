@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Patient;
 
-class PatientController extends Controller
+class ReportController extends Controller
 {
-	public function index ()
+	public function listByType()
+	{
+		return view('reports.list-type');
+	}
+
+	public function getListByType()
 	{
 		if(empty(Input::get('name'))){
 			$patients = Patient::paginate(10);
@@ -28,10 +33,5 @@ class PatientController extends Controller
 		}
 
 		return $patients;
-	}
-
-	public function findByHn ($hn)
-	{
-		return Patient::where(['hn' => $hn])->first();
 	}
 }
