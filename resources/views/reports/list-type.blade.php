@@ -11,27 +11,31 @@
             </ol>
 
             <!-- /** ===== Filter ===== */ -->
-            <div class="row" style="margin: 10px;">
-                <div class="col-md-6">
-                    <div style="display: flex; align-items: center;">
-                        <label for="">ปีงบประมาณ :</label>
-                        <div class="col-md-4">
-                            <input type="text" id="dtpYear" ng-model="dtpYear" class="form-control" />
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div style="display: flex; align-items: center;">
+                                <label for="">ปีงบประมาณ :</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="dtpYear" ng-model="dtpYear" class="form-control" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div style="display: flex; align-items: center;">
-                        <label for="">ประเภทความพิการ :</label>
-                        <div class="col-md-4">
-                            <select id="cboType" ng-model="cboType" class="form-control" ng-change="getListType()">
-                                <option value="">-- กรุณาเลือก --</option>
-                                @foreach($types as $type)
-                                    <option value="{{ $type->disability_type_id }}">
-                                        {{ $type->disability_type_name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                        <div class="col-md-6">
+                            <div style="display: flex; align-items: center;">
+                                <label for="">ประเภทความพิการ :</label>
+                                <div class="col-md-6">
+                                    <select id="cboType" ng-model="cboType" class="form-control" ng-change="getListType()">
+                                        <option value="">-- กรุณาเลือก --</option>
+                                        @foreach($types as $type)
+                                            <option value="{{ $type->disability_type_id }}">
+                                                {{ $type->disability_type_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
