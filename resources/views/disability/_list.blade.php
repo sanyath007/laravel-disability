@@ -33,14 +33,14 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                <th style="text-align: center;">ลำดับ</slot></th>
-                                <th style="text-align: center;">เลขที่ใบรับรอง</th>
-                                <th>ชื่อ-สกุล</th>
-                                <th style="text-align: center;">เลขประจำตัวประชาชน</th>
-                                <th style="text-align: center;">ประเภทความพิการ</th>
-                                <th style="text-align: center;">ระบุความพิการ</th>
-                                <th>แพทย์ผู้ออกใบรับรอง</th>
-                                <th style="text-align: center;">Actions</th>
+                                    <th style="width: 3%; text-align: center;">ลำดับ</slot></th>
+                                    <th style="width: 8%; text-align: center;">เลขที่ใบรับรอง</th>
+                                    <th>ชื่อ-สกุล</th>
+                                    <th style="width: 10%; text-align: center;">เลขประจำตัวประชาชน</th>
+                                    <th style="width: 20%;">ประเภทความพิการ</th>
+                                    <th style="width: 20%;">ระบุความพิการ</th>
+                                    <th style="width: 15%;">แพทย์ผู้ออกใบรับรอง</th>
+                                    <th style="width: 5%; text-align: center;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,8 +50,8 @@
                                     <td>@{{ disability.name}}</td>
                                     <td style="text-align: center;">@{{ disability.cid}}</td>
                                     <td>
-                                    <ul style="margin-left: 8px; padding: 0px;">
-                                        <li ng-repeat="(index, dtype) in disability.disability_type">
+                                    <ul class="tags">
+                                        <li ng-repeat="(index, dtype) in disability.disability_type" class="tag-list">
                                             @{{ renderType(dtype) }}
                                         </li>
                                     </ul>
@@ -61,7 +61,7 @@
                                     <td style="text-align: center;">
                                         <a
                                             href="{{ url('disability/edit', ['id' => '']) }}"
-                                            class="btn btn-warning"
+                                            class="btn btn-warning btn-sm"
                                         >
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
