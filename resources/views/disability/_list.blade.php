@@ -3,14 +3,14 @@
 @section('content')
 
     <div class="content" ng-controller="disabilityController" ng-init="search(cboYear)">
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin: 0 20px;">
 
             <ol class="breadcrumb">
                 <li><a href="{{ url('/disabilities') }}"><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
                 <li class="active">ทะเบียนผู้พิการ</li>
             </ol>
 
-            <div class="row" style="margin-bottom: 10px;">
+            <div class="row" style="margin: 10px;">
                 <div class="col-md-6">
                     <div style="display: flex; align-items: center;">
                         <label for="">ปีงบประมาณ :</label>
